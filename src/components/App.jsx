@@ -1,5 +1,5 @@
 import React from "react";
-import {PhonebookApp, HeaderApp} from './App.styled'
+import {PhonebookApp, HeaderApp} from './Apps.styled'
 
 export class App extends React.Component {
   state = {
