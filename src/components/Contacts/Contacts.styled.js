@@ -17,10 +17,8 @@ margin-bottom:10px;
 `
 
 export const Span=styled.span`
-display:inline-block;
 `
 
 export const DeleteItemButton =styled.button`
-display:inline-block;
 padding:auto;
-margin-right:40px;`
+cursor:pointer;`
