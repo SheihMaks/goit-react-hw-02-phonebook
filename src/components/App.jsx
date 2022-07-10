@@ -14,9 +14,9 @@ export class App extends React.Component {
     filter: '',
   }
 
-   formHandleSubmit=data=>{
-this.setState((prevState)=>({contacts:[...prevState.contacts,data]}))
-}
+formHandleSubmit=data => this.state.contacts.find(el=>el.name===data.name) ? 
+window.alert('data.name: in  list') : this.setState((prevState)=>({contacts:[...prevState.contacts,data]}))
+
 
 onUserFilter=(e)=>{
 this.setState({filter:e.currentTarget.value})
@@ -26,6 +26,11 @@ getContactsFiltered=()=>{
   const normalizedFilterName=this.state.filter.toLowerCase()
   return this.state.contacts.filter(el=> el.name.toLowerCase().includes(normalizedFilterName))
 }
+
+deleteItem=(e)=>{
+  const {contacts}=this.state;
+  return  this.setState({contacts: (contacts.filter((contact)=> contact.name !== e.currentTarget.id))})}
+
   render(){
     const contactsList = this.getContactsFiltered();
     return (<PhonebookApp>
@@ -39,7 +44,9 @@ getContactsFiltered=()=>{
       filterName={this.state.filter}
       onUserFilter={this.onUserFilter}
       />
-      <Contacts contactsList={contactsList}/>
+      <Contacts 
+      contactsList={contactsList}
+      deleteItem={this.deleteItem}/>
     </PhonebookApp>)
   }
 }
