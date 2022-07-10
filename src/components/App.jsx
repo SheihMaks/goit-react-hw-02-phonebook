@@ -3,7 +3,9 @@ import {PhonebookApp, HeaderApp, HeaderSectionContacts} from './Apps.styled'
 import { ContactForm } from "./PhoneContactForm/ContactForm";
 import {Contacts} from './Contacts/Contacts';
 import { Filter } from "./UserFilter/Filter";
+import { nanoid } from "nanoid";
 export class App extends React.Component {
+  filterId=nanoid();
   state = {
     contacts: [
       {id: 'id-1', name: 'Rosie Simpson', number: '459-12-56'},
@@ -14,8 +16,15 @@ export class App extends React.Component {
     filter: '',
   }
 
-formHandleSubmit=data => this.state.contacts.find(el=>el.name===data.name) ? 
-window.alert('data.name: in  list') : this.setState((prevState)=>({contacts:[...prevState.contacts,data]}))
+formHandleSubmit=(data) => {
+  data={
+    name:data.name,
+    number:data.number,
+    id:nanoid()
+}
+  if (this.state.contacts.find(el=>el.name===data.name)){
+window.alert(`${data.name} is already in contacts`) } 
+else{ this.setState((prevState)=>({contacts:[data,...prevState.contacts]}))}}
 
 
 onUserFilter=(e)=>{
@@ -43,6 +52,7 @@ deleteItem=(e)=>{
       title='Find contacts by name'
       filterName={this.state.filter}
       onUserFilter={this.onUserFilter}
+      id={this.filterId}
       />
       <Contacts 
       contactsList={contactsList}
