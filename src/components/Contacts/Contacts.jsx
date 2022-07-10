@@ -1,9 +1,10 @@
 import PropTypes from 'prop-types';
-import { ContactsList } from './Contacts.styled';
+import { ContactsList,ContactListItem } from './Contacts.styled';
 
-export const contacts=({options})=>{
+export const Contacts=({contactsList})=>{
     return (<ContactsList>
-        {options.map(contact=>
-            return (<ContactListItem>{contact.name}</ContactListItem>))}
+        {contactsList.map((contact,i)=>{
+            return (<ContactListItem key={i}>{contact.name}: {contact.number}
+            </ContactListItem>)})}
     </ContactsList>)
 }
