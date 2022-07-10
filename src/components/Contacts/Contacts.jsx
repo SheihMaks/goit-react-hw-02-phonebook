@@ -8,3 +8,5 @@ export const Contacts=({contactsList})=>{
             </ContactListItem>)})}
     </ContactsList>)
 }
+
+Contacts.propTypes={contactsList:PropTypes.array,}
