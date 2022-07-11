@@ -4,6 +4,7 @@ import { ContactForm } from "./PhoneContactForm/ContactForm";
 import {Contacts} from './Contacts/Contacts';
 import { Filter } from "./UserFilter/Filter";
 import { nanoid } from "nanoid";
+
 export class App extends React.Component {
   filterId=nanoid();
   state = {
@@ -32,8 +33,8 @@ this.setState({filter:e.currentTarget.value})
 }
 
 getContactsFiltered=()=>{
-  const {contacts} = this.state;
-  const normalizedFilterName=this.state.filter.toLowerCase()
+  const {contacts,filter} = this.state;
+  const normalizedFilterName=filter.toLowerCase()
   return contacts.filter(el=> el.name.toLowerCase().includes(normalizedFilterName))
 }
 
@@ -43,21 +44,23 @@ deleteItem=(e)=>{
 
   render(){
     const contactsList = this.getContactsFiltered();
+    const {filter}=this.state;
+    const {formHandleSubmit,onUserFilter,filterId,deleteItem}=this;
     return (<PhonebookApp>
       <HeaderApp>Phonebook</HeaderApp>
       <ContactForm 
-      onSubmit={this.formHandleSubmit}
+      onSubmit={formHandleSubmit}
       />
       <HeaderSectionContacts>Contacts</HeaderSectionContacts>
       <Filter 
       title='Find contacts by name'
-      filterName={this.state.filter}
-      onUserFilter={this.onUserFilter}
-      id={this.filterId}
+      filterName={filter}
+      onUserFilter={onUserFilter}
+      id={filterId}
       />
       <Contacts 
       contactsList={contactsList}
-      deleteItem={this.deleteItem}/>
+      deleteItem={deleteItem}/>
     </PhonebookApp>)
   }
 }
