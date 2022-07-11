@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const ContactFormContainer=styled.div`
-width:30%;
+width:auto%;
 padding:15px;
 border: 1px solid black;`
 
@@ -22,7 +22,11 @@ export const Button=styled.button`
 padding:4px;
 border: 1px solid grey;
 border-radius:5px;
-cursor:pointer;`
+cursor:pointer;
+box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+:hover{
+    background-color:white;
+};`
 
 export const LabelOfInputPhone=styled.label`
 display:block;

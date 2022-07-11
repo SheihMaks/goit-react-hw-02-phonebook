@@ -1,11 +1,11 @@
 import styled from "styled-components";
 
-export const ContactsList=styled.ol`
+export const ContactsList=styled.ul`
+padding:0;
+margin:0;
 display:flex;
 flex-direction:column;
-padding-right:20px;
-list-style: inside;
-width:30%;
+width:100%;
 `
 
 export const ContactListItem=styled.li`
@@ -21,4 +21,8 @@ export const Span=styled.span`
 
 export const DeleteItemButton =styled.button`
 padding:auto;
-cursor:pointer;`
+cursor:pointer;
+box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+:hover{
+    background-color:white;
+};`

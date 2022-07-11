@@ -32,8 +32,9 @@ this.setState({filter:e.currentTarget.value})
 }
 
 getContactsFiltered=()=>{
+  const {contacts} = this.state;
   const normalizedFilterName=this.state.filter.toLowerCase()
-  return this.state.contacts.filter(el=> el.name.toLowerCase().includes(normalizedFilterName))
+  return contacts.filter(el=> el.name.toLowerCase().includes(normalizedFilterName))
 }
 
 deleteItem=(e)=>{
